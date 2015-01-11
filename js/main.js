@@ -15,8 +15,9 @@ document.addEventListener('DOMContentLoaded', function(){
         document.getElementById('computerScore').innerHTML = computerScore;
     }
 
-    function play(userChoice, botChoice) {
+    function play(userChoice) {
         var result;
+        var botChoice = randomizeBot();
 
         if (userChoice === 'rock') {
             if(botChoice === 'rock') {
@@ -83,23 +84,17 @@ document.addEventListener('DOMContentLoaded', function(){
     document.getElementById('rock').onclick = function() {
         console.log('rock click');
 
-        var botChoice = randomizeBot();
-
-        play('rock', botChoice);
+        play('rock');
     }
     document.getElementById('paper').onclick = function() {
         console.log('paper click');
 
-        var botChoice = randomizeBot();
-
-        play('paper', botChoice);
+        play('paper');
     }
     document.getElementById('scissors').onclick = function() {
         console.log('scissors click');
 
-        var botChoice = randomizeBot();
-
-        play('scissors', botChoice);
+        play('scissors');
     }
 
 })
