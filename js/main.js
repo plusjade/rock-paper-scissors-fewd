@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     document.getElementById('rock').onclick = function() {
         console.log('rock click');
+        document.getElementById('status').innerHTML = 'You played rock. The bot played {TEST} . You win! :)';
     }
     document.getElementById('paper').onclick = function() {
         console.log('paper click');
