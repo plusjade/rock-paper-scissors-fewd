@@ -10,7 +10,19 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     function updateUI(userChoice, botChoice, result) {
-        document.getElementById('status').innerHTML = 'You played ' + userChoice + '. The bot played '+ botChoice +'.<br>You ' + result;
+        var resultText;
+
+        if(result === 0) {
+            resultText = "tied. :|";
+        }
+        else if (result === -1 ) {
+            resultText = "lose. :(";
+        }
+        else if (result === 1) {
+            resultText = "win! :)";
+        }
+
+        document.getElementById('status').innerHTML = 'You played ' + userChoice + '. The bot played '+ botChoice +'.<br>You ' + resultText;
         document.getElementById('humanScore').innerHTML = humanScore;
         document.getElementById('computerScore').innerHTML = computerScore;
     }
@@ -24,21 +36,21 @@ document.addEventListener('DOMContentLoaded', function(){
                 // TIE - rock ties with rock
                 console.log(botChoice, 'TIE');
                 // no change in score
-                result = "tied. :|";
+                result = 0;
             }
             else if(botChoice === 'paper') {
                 // LOSE - paper covers rock
                 console.log(botChoice, 'LOSE');
                 // computer wins:
                 computerScore += 1;
-                result = "lose. :(";
+                result = -1;
             }
             else if(botChoice === 'scissors') {
                 // WIN - rock breaks scissors
                 console.log(botChoice, 'WIN');
                 // human wins
                 humanScore += 1;
-                result = "win! :)";
+                result = 1;
             }
         }
         else if (userChoice === 'paper') {
@@ -46,16 +58,16 @@ document.addEventListener('DOMContentLoaded', function(){
             if(botChoice === 'rock') {
                 // WIN - paper covers rock
                 humanScore += 1;
-                result = "win! :)";
+                result = 1;
             }
             else if(botChoice === 'paper') {
                 // TIE
-                result = "tied. :|";
+                result = 0;
             }
             else if(botChoice === 'scissors') {
                 // LOSE - scissors cuts paper
                 computerScore += 1;
-                result = "lose. :(";
+                result = -1;
             }
         }
         else if (userChoice === 'scissors') {
@@ -63,16 +75,16 @@ document.addEventListener('DOMContentLoaded', function(){
             if(botChoice === 'rock') {
                 // LOSE - rock breaks scissors
                 computerScore += 1;
-                result = "lose. :(";
+                result = -1;
             }
             else if(botChoice === 'paper') {
                 // WIN - scissors cuts paper
                 humanScore += 1;
-                result = "win! :)";
+                result = 1;
             }
             else if(botChoice === 'scissors') {
                 // TIE
-                result = "tied. :|";
+                result = 0;
             }
         }
 
