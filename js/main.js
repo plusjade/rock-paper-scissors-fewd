@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', function(){
       return choices[indexChoice];
     }
 
+    function updateUI(userChoice, botChoice, result) {
+        document.getElementById('status').innerHTML = 'You played ' + userChoice + '. The bot played '+ botChoice +'.<br>You ' + result;
+        document.getElementById('humanScore').innerHTML = humanScore;
+        document.getElementById('computerScore').innerHTML = computerScore;
+    }
+
     document.getElementById('rock').onclick = function() {
         console.log('rock click');
 
@@ -38,9 +44,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         console.log('score: ', humanScore, computerScore);
 
-        document.getElementById('status').innerHTML = 'You played rock. The bot played '+ botChoice +'.<br>You ' + result;
-        document.getElementById('humanScore').innerHTML = humanScore;
-        document.getElementById('computerScore').innerHTML = computerScore;
+        updateUI('rock', botChoice, result);
     }
     document.getElementById('paper').onclick = function() {
         console.log('paper click');
@@ -66,9 +70,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         console.log('score: ', humanScore, computerScore);
 
-        document.getElementById('status').innerHTML = 'You played paper. The bot played '+ botChoice +'.<br>You ' + result;
-        document.getElementById('humanScore').innerHTML = humanScore;
-        document.getElementById('computerScore').innerHTML = computerScore;
+        updateUI('paper', botChoice, result);
     }
     document.getElementById('scissors').onclick = function() {
         console.log('scissors click');
@@ -94,9 +96,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         console.log('score: ', humanScore, computerScore);
 
-        document.getElementById('status').innerHTML = 'You played scissors. The bot played '+ botChoice +'.<br>You ' + result;
-        document.getElementById('humanScore').innerHTML = humanScore;
-        document.getElementById('computerScore').innerHTML = computerScore;
+        updateUI('scissors', botChoice, result);
     }
 
 })
