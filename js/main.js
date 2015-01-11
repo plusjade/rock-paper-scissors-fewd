@@ -13,28 +13,32 @@ document.addEventListener('DOMContentLoaded', function(){
         console.log('rock click');
 
         var botChoice = randomizeBot();
+        var result;
 
         if(botChoice === 'rock') {
             // TIE - rock ties with rock
             console.log(botChoice, 'TIE');
             // no change in score
+            result = "tied. :|";
         }
         else if(botChoice === 'paper') {
             // LOSE - paper covers rock
             console.log(botChoice, 'LOSE');
             // computer wins:
             computerScore += 1;
+            result = "lose. :(";
         }
         else if(botChoice === 'scissors') {
             // WIN - rock breaks scissors
             console.log(botChoice, 'WIN');
             // human wins
             humanScore += 1;
+            result = "win! :)";
         }
 
         console.log('score: ', humanScore, computerScore);
 
-        document.getElementById('status').innerHTML = 'You played rock. The bot played '+ botChoice +' . You win! :)';
+        document.getElementById('status').innerHTML = 'You played rock. The bot played '+ botChoice +'.<br>You ' + result;
         document.getElementById('humanScore').innerHTML = humanScore;
         document.getElementById('computerScore').innerHTML = computerScore;
     }
