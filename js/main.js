@@ -77,32 +77,29 @@ document.addEventListener('DOMContentLoaded', function(){
 
         console.log('score: ', humanScore, computerScore);
 
-        return result;
+        updateUI(userChoice, botChoice, result);
     }
 
     document.getElementById('rock').onclick = function() {
         console.log('rock click');
 
         var botChoice = randomizeBot();
-        var result = play('rock', botChoice);
 
-        updateUI('rock', botChoice, result);
+        play('rock', botChoice);
     }
     document.getElementById('paper').onclick = function() {
         console.log('paper click');
 
         var botChoice = randomizeBot();
-        var result = play('paper', botChoice);
 
-        updateUI('paper', botChoice, result);
+        play('paper', botChoice);
     }
     document.getElementById('scissors').onclick = function() {
         console.log('scissors click');
 
         var botChoice = randomizeBot();
-        var result = play('scissors', botChoice);
 
-        updateUI('scissors', botChoice, result);
+        play('scissors', botChoice);
     }
 
 })
