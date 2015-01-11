@@ -44,7 +44,31 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     document.getElementById('paper').onclick = function() {
         console.log('paper click');
-        document.getElementById('status').innerHTML = 'You played paper. The bot played {TEST} . You win! :)';
+
+        var botChoice = randomizeBot();
+        var result;
+
+        // logic when user plays paper
+        if(botChoice === 'rock') {
+            // WIN - paper covers rock
+            humanScore += 1;
+            result = "win! :)";
+        }
+        else if(botChoice === 'paper') {
+            // TIE
+            result = "tied. :|";
+        }
+        else if(botChoice === 'scissors') {
+            // LOSE - scissors cuts paper
+            computerScore += 1;
+            result = "lose. :(";
+        }
+
+        console.log('score: ', humanScore, computerScore);
+
+        document.getElementById('status').innerHTML = 'You played paper. The bot played '+ botChoice +'.<br>You ' + result;
+        document.getElementById('humanScore').innerHTML = humanScore;
+        document.getElementById('computerScore').innerHTML = computerScore;
     }
     document.getElementById('scissors').onclick = function() {
         console.log('scissors click');
