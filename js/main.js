@@ -15,34 +15,76 @@ document.addEventListener('DOMContentLoaded', function(){
         document.getElementById('computerScore').innerHTML = computerScore;
     }
 
+    function play(userChoice, botChoice) {
+        var result;
+
+        if (userChoice === 'rock') {
+            if(botChoice === 'rock') {
+                // TIE - rock ties with rock
+                console.log(botChoice, 'TIE');
+                // no change in score
+                result = "tied. :|";
+            }
+            else if(botChoice === 'paper') {
+                // LOSE - paper covers rock
+                console.log(botChoice, 'LOSE');
+                // computer wins:
+                computerScore += 1;
+                result = "lose. :(";
+            }
+            else if(botChoice === 'scissors') {
+                // WIN - rock breaks scissors
+                console.log(botChoice, 'WIN');
+                // human wins
+                humanScore += 1;
+                result = "win! :)";
+            }
+        }
+        else if (userChoice === 'paper') {
+            // logic when user plays paper
+            if(botChoice === 'rock') {
+                // WIN - paper covers rock
+                humanScore += 1;
+                result = "win! :)";
+            }
+            else if(botChoice === 'paper') {
+                // TIE
+                result = "tied. :|";
+            }
+            else if(botChoice === 'scissors') {
+                // LOSE - scissors cuts paper
+                computerScore += 1;
+                result = "lose. :(";
+            }
+        }
+        else if (userChoice === 'scissors') {
+            // logic when user plays scissors
+            if(botChoice === 'rock') {
+                // LOSE - rock breaks scissors
+                computerScore += 1;
+                result = "lose. :(";
+            }
+            else if(botChoice === 'paper') {
+                // WIN - scissors cuts paper
+                humanScore += 1;
+                result = "win! :)";
+            }
+            else if(botChoice === 'scissors') {
+                // TIE
+                result = "tied. :|";
+            }
+        }
+
+        console.log('score: ', humanScore, computerScore);
+
+        return result;
+    }
+
     document.getElementById('rock').onclick = function() {
         console.log('rock click');
 
         var botChoice = randomizeBot();
-        var result;
-
-        if(botChoice === 'rock') {
-            // TIE - rock ties with rock
-            console.log(botChoice, 'TIE');
-            // no change in score
-            result = "tied. :|";
-        }
-        else if(botChoice === 'paper') {
-            // LOSE - paper covers rock
-            console.log(botChoice, 'LOSE');
-            // computer wins:
-            computerScore += 1;
-            result = "lose. :(";
-        }
-        else if(botChoice === 'scissors') {
-            // WIN - rock breaks scissors
-            console.log(botChoice, 'WIN');
-            // human wins
-            humanScore += 1;
-            result = "win! :)";
-        }
-
-        console.log('score: ', humanScore, computerScore);
+        var result = play('rock', botChoice);
 
         updateUI('rock', botChoice, result);
     }
@@ -50,25 +92,7 @@ document.addEventListener('DOMContentLoaded', function(){
         console.log('paper click');
 
         var botChoice = randomizeBot();
-        var result;
-
-        // logic when user plays paper
-        if(botChoice === 'rock') {
-            // WIN - paper covers rock
-            humanScore += 1;
-            result = "win! :)";
-        }
-        else if(botChoice === 'paper') {
-            // TIE
-            result = "tied. :|";
-        }
-        else if(botChoice === 'scissors') {
-            // LOSE - scissors cuts paper
-            computerScore += 1;
-            result = "lose. :(";
-        }
-
-        console.log('score: ', humanScore, computerScore);
+        var result = play('paper', botChoice);
 
         updateUI('paper', botChoice, result);
     }
@@ -76,25 +100,7 @@ document.addEventListener('DOMContentLoaded', function(){
         console.log('scissors click');
 
         var botChoice = randomizeBot();
-        var result;
-
-        // logic when user plays scissors
-        if(botChoice === 'rock') {
-            // LOSE - rock breaks scissors
-            computerScore += 1;
-            result = "lose. :(";
-        }
-        else if(botChoice === 'paper') {
-            // WIN - scissors cuts paper
-            humanScore += 1;
-            result = "win! :)";
-        }
-        else if(botChoice === 'scissors') {
-            // TIE
-            result = "tied. :|";
-        }
-
-        console.log('score: ', humanScore, computerScore);
+        var result = play('scissors', botChoice);
 
         updateUI('scissors', botChoice, result);
     }
