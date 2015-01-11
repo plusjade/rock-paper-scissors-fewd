@@ -3,10 +3,16 @@ document.addEventListener('DOMContentLoaded', function(){
     var humanScore = 0;
     var computerScore = 0;
 
+    function randomizeBot() {
+      var choices = ['rock', 'paper', 'scissors'];
+      var indexChoice = Math.floor(Math.random() * 3);
+      return choices[indexChoice];
+    }
+
     document.getElementById('rock').onclick = function() {
         console.log('rock click');
 
-        var botChoice = 'paper';
+        var botChoice = randomizeBot();
 
         if(botChoice === 'rock') {
             // TIE - rock ties with rock
