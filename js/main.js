@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         console.log('score: ', humanScore, computerScore);
 
-        document.getElementById('status').innerHTML = 'You played rock. The bot played {TEST} . You win! :)';
+        document.getElementById('status').innerHTML = 'You played rock. The bot played '+ botChoice +' . You win! :)';
         document.getElementById('humanScore').innerHTML = humanScore;
         document.getElementById('computerScore').innerHTML = computerScore;
     }
