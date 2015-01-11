@@ -34,21 +34,15 @@ document.addEventListener('DOMContentLoaded', function(){
         if (userChoice === 'rock') {
             if(botChoice === 'rock') {
                 // TIE - rock ties with rock
-                console.log(botChoice, 'TIE');
-                // no change in score
                 result = 0;
             }
             else if(botChoice === 'paper') {
                 // LOSE - paper covers rock
-                console.log(botChoice, 'LOSE');
-                // computer wins:
                 computerScore += 1;
                 result = -1;
             }
             else if(botChoice === 'scissors') {
                 // WIN - rock breaks scissors
-                console.log(botChoice, 'WIN');
-                // human wins
                 humanScore += 1;
                 result = 1;
             }
@@ -88,24 +82,16 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         }
 
-        console.log('score: ', humanScore, computerScore);
-
         updateUI(userChoice, botChoice, result);
     }
 
     document.getElementById('rock').onclick = function() {
-        console.log('rock click');
-
         play('rock');
     }
     document.getElementById('paper').onclick = function() {
-        console.log('paper click');
-
         play('paper');
     }
     document.getElementById('scissors').onclick = function() {
-        console.log('scissors click');
-
         play('scissors');
     }
 
