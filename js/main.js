@@ -85,14 +85,12 @@ document.addEventListener('DOMContentLoaded', function(){
         updateUI(userChoice, botChoice, result);
     }
 
-    document.getElementById('rock').onclick = function() {
-        play('rock');
-    }
-    document.getElementById('paper').onclick = function() {
-        play('paper');
-    }
-    document.getElementById('scissors').onclick = function() {
-        play('scissors');
+    function handleUserChoice(event) {
+        var choice = event.target.id;
+        play(choice);
     }
 
+    document.getElementById('rock').onclick = handleUserChoice;
+    document.getElementById('paper').onclick = handleUserChoice;
+    document.getElementById('scissors').onclick = handleUserChoice;
 })
