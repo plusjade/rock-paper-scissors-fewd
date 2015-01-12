@@ -2,6 +2,25 @@ document.addEventListener('DOMContentLoaded', function(){
 
     var humanScore = 0;
     var computerScore = 0;
+    var gameEngine = {
+        "rock" : {
+            "scissors" : 1,
+            "paper" : -1,
+            "rock" : 0
+        }
+        ,
+        "paper" : {
+            "rock" : 1,
+            "scissors" : -1,
+            "paper" : 0
+        }
+        ,
+        "scissors" : {
+            "paper" : 1,
+            "rock" : -1,
+            "scissors" : 0
+        }
+    }
 
     function randomizeBot() {
       var choices = ['rock', 'paper', 'scissors'];
@@ -28,58 +47,14 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     function play(userChoice) {
-        var result;
         var botChoice = randomizeBot();
+        var result = gameEngine[userChoice][botChoice];
 
-        if (userChoice === 'rock') {
-            if(botChoice === 'rock') {
-                // TIE - rock ties with rock
-                result = 0;
-            }
-            else if(botChoice === 'paper') {
-                // LOSE - paper covers rock
-                computerScore += 1;
-                result = -1;
-            }
-            else if(botChoice === 'scissors') {
-                // WIN - rock breaks scissors
-                humanScore += 1;
-                result = 1;
-            }
+        if (result === 1) {
+            humanScore += 1;
         }
-        else if (userChoice === 'paper') {
-            // logic when user plays paper
-            if(botChoice === 'rock') {
-                // WIN - paper covers rock
-                humanScore += 1;
-                result = 1;
-            }
-            else if(botChoice === 'paper') {
-                // TIE
-                result = 0;
-            }
-            else if(botChoice === 'scissors') {
-                // LOSE - scissors cuts paper
-                computerScore += 1;
-                result = -1;
-            }
-        }
-        else if (userChoice === 'scissors') {
-            // logic when user plays scissors
-            if(botChoice === 'rock') {
-                // LOSE - rock breaks scissors
-                computerScore += 1;
-                result = -1;
-            }
-            else if(botChoice === 'paper') {
-                // WIN - scissors cuts paper
-                humanScore += 1;
-                result = 1;
-            }
-            else if(botChoice === 'scissors') {
-                // TIE
-                result = 0;
-            }
+        else if (result === -1) {
+            computerScore += 1;
         }
 
         updateUI(userChoice, botChoice, result);
